@@ -1,0 +1,7 @@
+#!/bin/fish
+
+if [ $(pactl get-sink-mute $(pactl get-default-sink) | awk 'NR==1{print $2}') = "yes" ];
+	echo -n "$(pactl get-sink-volume $(pactl get-default-sink) | awk 'NR==1{print $5}') (Muted)"
+else
+	echo -n "$(pactl get-sink-volume $(pactl get-default-sink) | awk 'NR==1{print $5}')"
+end
